@@ -1,6 +1,7 @@
 import Carousel from "@/components/Carousel";
 import CategoryGrid from "@/components/CategoryGrid";
 import TopProductsCarousel from "@/components/TopProductsCarousel";
+import { router } from "expo-router";
 import { FlatList, View } from "react-native";
 
 const categories = [
@@ -28,14 +29,20 @@ const categories = [
 
 const topProducts = [
   {
+    id: 1,
     image: require("../../../assets/images/images.jpeg"),
     name: "Antivirus Pro",
     description: "Protection complète pour tous vos appareils.",
     purchases: 1200,
     price: "19,99€/mois",
-    onSubscribe: () => alert("Abonnement à Antivirus Pro !"),
+    onSubscribe: () =>
+      router.push({
+        pathname: "/(tabs)/(plans)/(checkout)/[id]",
+        params: { priceId: "1" },
+      }),
   },
   {
+    id: 1,
     image: require("../../../assets/images/images.jpeg"),
     name: "Stockage Cloud",
     description: "Sauvegardez vos fichiers en toute sécurité.",
@@ -44,6 +51,7 @@ const topProducts = [
     onSubscribe: () => alert("Abonnement à Stockage Cloud !"),
   },
   {
+    id: 1,
     image: require("../../../assets/images/images.jpeg"),
     name: "VPN Ultra",
     description: "Naviguez anonymement partout dans le monde.",

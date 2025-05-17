@@ -30,6 +30,14 @@ export default function AuthRedirectScreen() {
             </Text>
           </TouchableOpacity>
         </Link>
+        {/* Lien vers la page d'accueil */}
+        <Link href="/(tabs)/(home)" asChild>
+          <TouchableOpacity className="mt-8" activeOpacity={0.7}>
+            <Text className="text-gray-400 underline text-center">
+              Retour à l&apos;accueil
+            </Text>
+          </TouchableOpacity>
+        </Link>
       </View>
     </>
   );

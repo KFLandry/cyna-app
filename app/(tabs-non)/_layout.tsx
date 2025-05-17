@@ -1,7 +1,8 @@
 import { Stack } from "expo-router";
 
+const isLoggedIn = true;
+
 export default function TabNonLayout() {
-  const isLoggedIn = false;
   return (
     <Stack
       screenOptions={{

@@ -1,17 +1,18 @@
+import { UserProvider } from "@/providers/UserProvider";
 import { Stack } from "expo-router";
 import "../global.css";
 
 export default function RootLayout() {
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="(non-tabs)" /> */}
-      <Stack.Screen
-        name="+not-found"
-        options={{
-          title: "Oops! This screen doesn't exist.",
-        }}
-      ></Stack.Screen>
-    </Stack>
+    <UserProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name="+not-found"
+          options={{
+            title: "Oops! This screen doesn't exist.",
+          }}
+        ></Stack.Screen>
+      </Stack>
+    </UserProvider>
   );
 }
