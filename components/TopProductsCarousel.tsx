@@ -1,3 +1,5 @@
+import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 
 type Product = {
@@ -13,18 +15,33 @@ type TopProductsCarouselProps = {
   data: Product[];
 };
 
-function ProductCard({
-  image,
-  name,
-  description,
-  purchases,
-  price,
-  onSubscribe,
-}: Product) {
-  return (
-    <View className="w-64 bg-white rounded-xl shadow-md mr-4 p-3">
+export default function TopProductsCarousel({
+  data,
+}: TopProductsCarouselProps) {
+  const [favorites, setFavorites] = useState<number[]>([]);
+
+  const toggleFavorite = (idx: number) => {
+    setFavorites((prev) =>
+      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
+    );
+  };
+
+  const renderItem = ({ item, index }: { item: Product; index: number }) => (
+    <View className="w-64 bg-white rounded-xl shadow-md mr-4 p-3 relative">
+      {/* Icône favoris */}
+      <TouchableOpacity
+        style={{ position: "absolute", top: 12, right: 12, zIndex: 10 }}
+        onPress={() => toggleFavorite(index)}
+        hitSlop={10}
+      >
+        <Ionicons
+          name={favorites.includes(index) ? "heart" : "heart-outline"}
+          size={24}
+          color={favorites.includes(index) ? "#ef4444" : "#d1d5db"}
+        />
+      </TouchableOpacity>
       <Image
-        source={image}
+        source={item.image}
         style={{
           width: "100%",
           height: 100,
@@ -32,13 +49,19 @@ function ProductCard({
           resizeMode: "cover",
         }}
       />
-      <Text className="mt-2 text-base font-bold text-gray-900">{name}</Text>
-      <Text className="text-sm text-gray-500 mb-1">{description}</Text>
-      <Text className="text-xs text-gray-400 mb-1">{purchases} achats</Text>
-      <Text className="text-lg font-semibold text-blue-600 mb-2">{price}</Text>
+      <Text className="mt-2 text-base font-bold text-gray-900">
+        {item.name}
+      </Text>
+      <Text className="text-sm text-gray-500 mb-1">{item.description}</Text>
+      <Text className="text-xs text-gray-400 mb-1">
+        {item.purchases} achats
+      </Text>
+      <Text className="text-lg font-semibold text-blue-600 mb-2">
+        {item.price}
+      </Text>
       <TouchableOpacity
         className="bg-blue-500 rounded-full py-2"
-        onPress={onSubscribe}
+        onPress={item.onSubscribe}
         activeOpacity={0.8}
       >
         <Text className="text-white text-center font-bold">
@@ -47,11 +70,7 @@ function ProductCard({
       </TouchableOpacity>
     </View>
   );
-}
 
-export default function TopProductsCarousel({
-  data,
-}: TopProductsCarouselProps) {
   return (
     <View className="mt-8">
       <Text className="text-lg font-bold mb-2 px-4">Top produits</Text>
@@ -59,7 +78,7 @@ export default function TopProductsCarousel({
         data={data}
         horizontal
         keyExtractor={(_, idx) => idx.toString()}
-        renderItem={({ item }) => <ProductCard {...item} />}
+        renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 8 }}
       />

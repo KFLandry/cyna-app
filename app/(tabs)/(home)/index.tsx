@@ -5,22 +5,22 @@ import { FlatList, View } from "react-native";
 
 const categories = [
   {
-    image: require("../../assets/images/images.jpeg"),
+    image: require("../../../assets/images/images.jpeg"),
     text: "Securité",
     url: "/products/electronics",
   },
   {
-    image: require("../../assets/images/images.jpeg"),
+    image: require("../../../assets/images/images.jpeg"),
     text: "Stockage",
     url: "/products/clothes",
   },
   {
-    image: require("../../assets/images/images.jpeg"),
+    image: require("../../../assets/images/images.jpeg"),
     text: "Cyber Attack",
     url: "/products/home",
   },
   {
-    image: require("../../assets/images/images.jpeg"),
+    image: require("../../../assets/images/images.jpeg"),
     text: "Cyber Social",
     url: "/products/books",
   },
@@ -28,7 +28,7 @@ const categories = [
 
 const topProducts = [
   {
-    image: require("../../assets/images/images.jpeg"),
+    image: require("../../../assets/images/images.jpeg"),
     name: "Antivirus Pro",
     description: "Protection complète pour tous vos appareils.",
     purchases: 1200,
@@ -36,7 +36,7 @@ const topProducts = [
     onSubscribe: () => alert("Abonnement à Antivirus Pro !"),
   },
   {
-    image: require("../../assets/images/images.jpeg"),
+    image: require("../../../assets/images/images.jpeg"),
     name: "Stockage Cloud",
     description: "Sauvegardez vos fichiers en toute sécurité.",
     purchases: 950,
@@ -44,7 +44,7 @@ const topProducts = [
     onSubscribe: () => alert("Abonnement à Stockage Cloud !"),
   },
   {
-    image: require("../../assets/images/images.jpeg"),
+    image: require("../../../assets/images/images.jpeg"),
     name: "VPN Ultra",
     description: "Naviguez anonymement partout dans le monde.",
     purchases: 800,
@@ -55,22 +55,22 @@ const topProducts = [
 
 const products = [
   {
-    image: require("../../assets/images/images.jpeg"),
+    image: require("../../../assets/images/images.jpeg"),
     text: "Produit 1",
     url: "/products/1",
   },
   {
-    image: require("../../assets/images/images.jpeg"),
+    image: require("../../../assets/images/images.jpeg"),
     text: "Produit 2",
     url: "/products/2",
   },
   {
-    image: require("../../assets/images/images.jpeg"),
+    image: require("../../../assets/images/images.jpeg"),
     text: "Produit 3",
     url: "/products/3",
   },
   {
-    image: require("../../assets/images/images.jpeg"),
+    image: require("../../../assets/images/images.jpeg"),
     text: "Produit 4",
     url: "/products/4",
   },

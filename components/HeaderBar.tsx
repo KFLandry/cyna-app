@@ -6,7 +6,7 @@ export default function HeaderBar() {
   return (
     <View className="fixed flex-row items-center justify-between my-4 px-1 py-2 bg-white shadow-md">
       {/* Logo */}
-      <Link href="/home">
+      <Link href="/(tabs)/(home)">
         <Image
           source={require("../assets/logo/cyna_it_logo.jpeg")}
           resizeMode="contain"
@@ -24,12 +24,16 @@ export default function HeaderBar() {
 
       {/* Icônes à droite */}
       <View className="flex-row items-center space-x-3">
-        <TouchableOpacity>
-          <Ionicons name="cart-outline" size={32} color="#222" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Ionicons name="person-circle-outline" size={32} color="#222" />
-        </TouchableOpacity>
+        <Link href="/(tabs-non)/cart" asChild>
+          <TouchableOpacity>
+            <Ionicons name="cart-outline" size={32} color="#222" />
+          </TouchableOpacity>
+        </Link>
+        <Link href="/(tabs-non)/(profils)" asChild>
+          <TouchableOpacity>
+            <Ionicons name="person-circle-outline" size={32} color="#222" />
+          </TouchableOpacity>
+        </Link>
       </View>
     </View>
   );

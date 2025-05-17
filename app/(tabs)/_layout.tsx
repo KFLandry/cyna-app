@@ -5,22 +5,22 @@ export default function TabLayout() {
   return (
     <>
       <HeaderBar />
-
-      <Tabs screenOptions={{ headerShown: false  }}>
+      <Tabs screenOptions={{ headerShown: false }}>
         <Tabs.Screen
-          name="home"
+          name="(home)/index"
           options={{
             title: "Home",
           }}
         />
         <Tabs.Screen
-          name="products"
+          name="(products)/index"
           options={{
             title: "Products",
           }}
         />
+
         <Tabs.Screen
-          name="plans"
+          name="(plans)/index"
           options={{
             title: "Plans",
           }}

@@ -6,7 +6,7 @@ export default function ProductsScreen() {
     <>
       <View className="flex-1 justify-center items-center">
         <Text>Edit app/index.tsx to edit this screen.</Text>
-        <Link href="/products">
+        <Link href="/(tabs)/(products)" asChild>
           <Text className="text-blue-500">Go to profil</Text>
         </Link>
       </View>
