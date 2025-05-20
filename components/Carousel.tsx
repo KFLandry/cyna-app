@@ -11,6 +11,7 @@ import {
 } from "react-native";
 
 type CarouselCardProps = {
+  id?: number;
   image: any;
   text: string;
   url: string;
@@ -23,16 +24,16 @@ type CarouselProps = {
 const CARD_WIDTH = 500; // largeur de la card (image paysage)
 const CARD_MARGIN = 16;
 
-function CarouselCard({ image, text, url }: CarouselCardProps) {
+function CarouselCard({ image, text, id }: CarouselCardProps) {
   return (
-    <Link href={url} asChild>
+    <Link href={`/(tabs)/(products)?id=${id}`} asChild>
       <TouchableOpacity className="w-screen mr-4 bg-white rounded-xl shadow-md overflow-hidden">
         <View className="p-3">
           <Text className="text-base font-semibold text-gray-900">{text}</Text>
         </View>
         <Image
           source={image}
-          style={{height: 200, resizeMode: "cover" }}
+          style={{ height: 200, resizeMode: "cover" }}
           className="w-screen h-full object-cover"
         />
       </TouchableOpacity>

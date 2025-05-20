@@ -1,5 +1,6 @@
 import { Product, mockProducts } from "@/types/product";
 import { Ionicons } from "@expo/vector-icons";
+import { useSearchParams } from "expo-router/build/hooks";
 import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
@@ -12,8 +13,6 @@ import {
 } from "react-native";
 import ProductCard from "../../../components/ProductCard";
 import ProductModal from "../../../components/modals/ProductModal";
-
-// N'oublie pas d'importer mockProducts ou de remplacer par ton appel API réel
 
 // Types pour les catégories
 type Category = {
@@ -29,7 +28,6 @@ const fetchCategories = async (): Promise<Category[]> => [
   { id: 4, name: "Sauvegarde" },
   { id: 5, name: "Gestion d'accès" },
 ];
-
 // Simule un fetch des produits (remplace par ton appel API)
 const fetchProducts = async (
   categoryIds: number[],
@@ -72,6 +70,7 @@ export default function ProductListScreen() {
   const [total, setTotal] = useState(0);
   const [categoryModalVisible, setCategoryModalVisible] = useState(false);
 
+  const idProduct = useSearchParams().get("id");
   // Fetch catégories au chargement
   useEffect(() => {
     fetchCategories().then(setCategories);
@@ -87,7 +86,15 @@ export default function ProductListScreen() {
         setLoading(false);
       }
     );
-  }, [selectedCategories, promoOnly, sort, page]);
+
+    // Redirection vers la models detail si id Produit
+    if (idProduct) {
+      const product = products.find((p) => p.id === Number(idProduct));
+      if (product) {
+        setSelectedProduct(product);
+      }
+    }
+  }, [selectedCategories, promoOnly, sort, page, idProduct, products]);
 
   // Pagination
   const totalPages = Math.ceil(total / PAGE_SIZE);

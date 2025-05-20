@@ -1,7 +1,6 @@
 import Carousel from "@/components/Carousel";
 import CategoryGrid from "@/components/CategoryGrid";
 import TopProductsCarousel from "@/components/TopProductsCarousel";
-import { router } from "expo-router";
 import { FlatList, View } from "react-native";
 
 const categories = [
@@ -30,54 +29,54 @@ const categories = [
 const topProducts = [
   {
     id: 1,
+    priceId: "prod_N2v1g0x4z5",
     image: require("../../../assets/images/images.jpeg"),
     name: "Antivirus Pro",
     description: "Protection complète pour tous vos appareils.",
     purchases: 1200,
     price: "19,99€/mois",
-    onSubscribe: () =>
-      router.push({
-        pathname: "/(tabs)/(plans)/(checkout)/[id]",
-        params: { priceId: "1" },
-      }),
   },
   {
     id: 1,
+    priceId: "prod_N2v1g0x4z5",
     image: require("../../../assets/images/images.jpeg"),
     name: "Stockage Cloud",
     description: "Sauvegardez vos fichiers en toute sécurité.",
     purchases: 950,
     price: "9,99€/mois",
-    onSubscribe: () => alert("Abonnement à Stockage Cloud !"),
   },
   {
     id: 1,
+    priceId: "prod_N2v1g0x4z5",
     image: require("../../../assets/images/images.jpeg"),
     name: "VPN Ultra",
     description: "Naviguez anonymement partout dans le monde.",
     purchases: 800,
     price: "7,99€/mois",
-    onSubscribe: () => alert("Abonnement à VPN Ultra !"),
   },
 ];
 
 const products = [
   {
+    id: 1,
     image: require("../../../assets/images/images.jpeg"),
     text: "Produit 1",
     url: "/products/1",
   },
   {
+    id: 2,
     image: require("../../../assets/images/images.jpeg"),
     text: "Produit 2",
     url: "/products/2",
   },
   {
+    id: 3,
     image: require("../../../assets/images/images.jpeg"),
     text: "Produit 3",
     url: "/products/3",
   },
   {
+    id: 4,
     image: require("../../../assets/images/images.jpeg"),
     text: "Produit 4",
     url: "/products/4",

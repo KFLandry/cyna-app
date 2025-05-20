@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import { Link } from "expo-router";
 import { useState } from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 
@@ -8,6 +9,7 @@ type Product = {
   description: string;
   purchases: number;
   price: string;
+  priceId: string;
   onSubscribe?: () => void;
 };
 
@@ -59,15 +61,15 @@ export default function TopProductsCarousel({
       <Text className="text-lg font-semibold text-blue-600 mb-2">
         {item.price}
       </Text>
-      <TouchableOpacity
+      <Link
         className="bg-blue-500 rounded-full py-2"
-        onPress={item.onSubscribe}
-        activeOpacity={0.8}
+        href={`/(tabs-non)/(checkout)?priceId=${item.priceId}`}
+        asChild
       >
         <Text className="text-white text-center font-bold">
           Prendre un abonnement
         </Text>
-      </TouchableOpacity>
+      </Link>
     </View>
   );
 
